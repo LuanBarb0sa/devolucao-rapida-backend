@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
 
+import br.com.devolucao.backend.dto.ProductRequestDTO;
+
 @Table(name = "product")
 @Entity(name = "product")
 @Getter

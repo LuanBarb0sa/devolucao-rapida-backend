@@ -1,4 +1,4 @@
-package br.com.devolucao.backend.domain.product;
+package br.com.devolucao.backend.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

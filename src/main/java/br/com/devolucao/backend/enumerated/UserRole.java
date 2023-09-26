@@ -1,4 +1,4 @@
-package br.com.devolucao.backend.domain.user;
+package br.com.devolucao.backend.enumerated;
 
 public enum UserRole {
     ADMIN("admin"),
