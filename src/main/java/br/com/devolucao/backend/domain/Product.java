@@ -1,4 +1,4 @@
-package br.com.devolucao.backend.domain.product;
+package br.com.devolucao.backend.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

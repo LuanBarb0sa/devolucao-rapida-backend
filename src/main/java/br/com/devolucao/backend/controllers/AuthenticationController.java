@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.devolucao.backend.domain.user.User;
+import br.com.devolucao.backend.domain.User;
 import br.com.devolucao.backend.dto.AuthenticationDTO;
 import br.com.devolucao.backend.dto.LoginResponseDTO;
 import br.com.devolucao.backend.dto.RegisterDTO;

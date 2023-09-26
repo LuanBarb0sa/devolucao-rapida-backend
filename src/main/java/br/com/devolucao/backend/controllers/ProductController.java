@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.devolucao.backend.domain.product.Product;
+import br.com.devolucao.backend.domain.Product;
 import br.com.devolucao.backend.dto.ProductRequestDTO;
 import br.com.devolucao.backend.dto.ProductResponseDTO;
 import br.com.devolucao.backend.repositories.ProductRepository;
