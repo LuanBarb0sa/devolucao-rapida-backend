@@ -1,13 +1,14 @@
-package com.example.auth.controllers;
+package br.com.devolucao.backend.controllers;
 
-import com.example.auth.domain.product.Product;
-import com.example.auth.domain.product.ProductRequestDTO;
-import com.example.auth.domain.product.ProductResponseDTO;
-import com.example.auth.repositories.ProductRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import br.com.devolucao.backend.domain.product.Product;
+import br.com.devolucao.backend.domain.product.ProductRequestDTO;
+import br.com.devolucao.backend.domain.product.ProductResponseDTO;
+import br.com.devolucao.backend.repositories.ProductRepository;
 
 import java.util.List;
 

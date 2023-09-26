@@ -1,8 +1,9 @@
-package com.example.auth.repositories;
+package br.com.devolucao.backend.repositories;
 
-import com.example.auth.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.devolucao.backend.domain.user.User;
 
 public interface UserRepository extends JpaRepository<User, String> {
     UserDetails findByLogin(String login);

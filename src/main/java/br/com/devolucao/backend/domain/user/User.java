@@ -1,4 +1,4 @@
-package com.example.auth.domain.user;
+package br.com.devolucao.backend.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

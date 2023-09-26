@@ -1,11 +1,5 @@
-package com.example.auth.controllers;
+package br.com.devolucao.backend.controllers;
 
-import com.example.auth.domain.user.AuthenticationDTO;
-import com.example.auth.domain.user.LoginResponseDTO;
-import com.example.auth.domain.user.RegisterDTO;
-import com.example.auth.domain.user.User;
-import com.example.auth.infra.security.TokenService;
-import com.example.auth.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.devolucao.backend.domain.user.AuthenticationDTO;
+import br.com.devolucao.backend.domain.user.LoginResponseDTO;
+import br.com.devolucao.backend.domain.user.RegisterDTO;
+import br.com.devolucao.backend.domain.user.User;
+import br.com.devolucao.backend.infra.security.TokenService;
+import br.com.devolucao.backend.repositories.UserRepository;
 
 @RestController
 @RequestMapping("auth")

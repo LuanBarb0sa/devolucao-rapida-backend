@@ -1,4 +1,4 @@
-package com.example.auth.domain.product;
+package br.com.devolucao.backend.domain.product;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,10 +1,12 @@
-package com.example.auth.infra.security;
+package br.com.devolucao.backend.infra.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.example.auth.domain.user.User;
+
+import br.com.devolucao.backend.domain.user.User;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

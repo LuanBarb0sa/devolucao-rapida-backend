@@ -1,11 +1,12 @@
-package com.example.auth.services;
+package br.com.devolucao.backend.services;
 
-import com.example.auth.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import br.com.devolucao.backend.repositories.UserRepository;
 
 @Service
 public class AuthorizationService implements UserDetailsService {
