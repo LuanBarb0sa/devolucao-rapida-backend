@@ -1,6 +1,5 @@
 package br.com.devolucao.backend.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,58 +9,53 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import br.com.devolucao.backend.dto.MunicipioDTO;
 import br.com.devolucao.backend.dto.UfDTO;
+import br.com.devolucao.backend.services.EnderecoService;
 import reactor.core.publisher.Mono;
 
 @Controller
 @RequestMapping("/uf")
 public class UfMunicipioController {
-	 private final WebClient webClient;
+	
+	private final EnderecoService enderecoService;
+
     @Autowired
-    private WebClient.Builder webClientBuilder;
+    public UfMunicipioController(EnderecoService enderecoService) {
+        this.enderecoService = enderecoService;
+    }
 
     @GetMapping
     public @ResponseBody Mono<ResponseEntity<List<UfDTO>>> getAllUFs() {
-        // Defina a URL do endpoint do IBGE que retorna as UFs
-        String ibgeApiUrl = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+        List<UfDTO> ufsList = enderecoService.getAllUFs();
 
-        // Use o WebClient para fazer uma chamada GET para o endpoint do IBGE
-        WebClient webClient = webClientBuilder.baseUrl(ibgeApiUrl).build();
-        return webClient
-                .get()
-                .retrieve()
-                .bodyToMono(UfDTO[].class)
-                .map((ufsArray) -> {
-                    List<UfDTO> ufsList = Arrays.asList(ufsArray);
-                    return ResponseEntity.ok().body(ufsList);
-                })
-                .defaultIfEmpty(ResponseEntity.notFound().build());
-    }
-    
-    @Autowired
-    public UfMunicipioController(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("https://servicodados.ibge.gov.br/api/v1/localidades/estados").build();
+        if (!ufsList.isEmpty()) {
+            return Mono.just(ResponseEntity.ok(ufsList));
+        } else {
+            return Mono.just(ResponseEntity.notFound().build());
+        }
     }
 
     @GetMapping("/{uf}/municipios")
     public ResponseEntity<?> getMunicipiosByUf(@PathVariable String uf) {
-        String ibgeApiUrl = "/{uf}/municipios";
+        List<MunicipioDTO> municipios = enderecoService.getMunicipiosByUf(uf);
 
-        Mono<MunicipioDTO[]> responseMono = webClient
-            .get()
-            .uri(uriBuilder -> uriBuilder.path(ibgeApiUrl).build(uf))
-            .retrieve()
-            .bodyToMono(MunicipioDTO[].class);
-
-        MunicipioDTO[] municipios = responseMono.block();
-
-        if (municipios != null) {
+        if (!municipios.isEmpty()) {
             return ResponseEntity.ok(municipios);
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    @GetMapping("/bairros/{uf}/{cidade}")
+    public ResponseEntity<List<String>> obterBairros(@PathVariable String uf, @PathVariable String cidade) {
+        List<String> bairros = enderecoService.obterBairros(uf, cidade);
+
+        if (bairros.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(bairros);
     }
 }
