@@ -58,4 +58,18 @@ public class UfMunicipioController {
 
         return ResponseEntity.ok(bairros);
     }
+    
+	@GetMapping("/lojas/{municipio}/{bairro}")
+	public ResponseEntity<List<String>> obterLojas(@PathVariable String municipio ,@PathVariable String bairro) {
+
+		List<String> lojas = enderecoService.obterLojas(municipio, bairro);
+
+		if (lojas.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		return ResponseEntity.ok(lojas);
+
+	}
+    
 }

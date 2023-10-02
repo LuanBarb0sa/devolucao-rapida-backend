@@ -71,4 +71,16 @@ public class EnderecoService {
         return enderecoRepository.findBairrosByUfAndMunicipio(uf, cidade);
     }
 
+	@Transactional
+	public List<String> obterLojas(String municipio,String bairro) {
+		
+		LOGGER.info("Obter lojas no bairro:" + bairro);
+		
+		if(StringUtils.isEmpty(bairro)) {
+			throw new IllegalArgumentException("Bairro deve ser fornecido.");
+		}
+		
+		return enderecoRepository.findLojasByBairro(municipio, bairro);
+	}
+
 }

@@ -10,7 +10,10 @@ import br.com.devolucao.backend.domain.Estabelecimento;
 
 public interface EnderecoRepository extends JpaRepository<Estabelecimento, Long> {
 	
-    @Query("SELECT DISTINCT e.bairro FROM estabelecimento e WHERE e.uf = :uf AND e.municipio = :municipio")
+	@Query("SELECT DISTINCT e.bairro FROM estabelecimento e WHERE e.uf = :uf AND e.municipio = :municipio")
     List<String> findBairrosByUfAndMunicipio(@Param("uf") String uf, @Param("municipio") String municipio);
+	
+	@Query("SELECT DISTINCT e.identificacao FROM estabelecimento e WHERE e.municipio = :municipio AND e.bairro = :bairro")
+	List<String> findLojasByBairro(@Param("municipio") String municipio, @Param("bairro") String bairro);
 
 }
