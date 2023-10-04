@@ -10,7 +10,7 @@ import br.com.devolucao.backend.domain.Estabelecimento;
 @Repository
 public interface EstabelecimentoRepository extends JpaRepository<Estabelecimento, Long>{
 
-	@Query("SELECT e from estabelecimento e WHERE e.uf = :uf AND e.municipio = :municipio AND e.cidade = :cidade AND e.bairro = :bairro AND e.identificacao = :loja")
-	Estabelecimento obterEstabelecimento(@Param("uf") String uf, @Param("municipio") String municipio, @Param("cidade") String cidade, @Param("bairro")String bairro, @Param("loja") String loja);
+	@Query("SELECT e from estabelecimento e WHERE e.uf = :uf AND e.municipio = :municipio AND e.bairro = :bairro AND e.identificacao = :loja")
+	Estabelecimento obterEstabelecimento(@Param("uf") String uf, @Param("municipio") String municipio,@Param("bairro")String bairro, @Param("loja") String loja);
 
 }

@@ -20,11 +20,10 @@ public class EstabelecimentoService {
 	public Estabelecimento obterEstabelecimento(ChamadoDTO chamadoDTO) {
 	    String uf = chamadoDTO.getUf();
 	    String municipio = chamadoDTO.getMunicipio();
-	    String cidade = chamadoDTO.getCidade();
 	    String bairro = chamadoDTO.getBairro();
 	    String loja = chamadoDTO.getLoja();
 
-	    return estabelecimentoRepository.obterEstabelecimento(uf, municipio, cidade, bairro, loja);
+	    return estabelecimentoRepository.obterEstabelecimento(uf, municipio, bairro, loja);
 	}
 
 }

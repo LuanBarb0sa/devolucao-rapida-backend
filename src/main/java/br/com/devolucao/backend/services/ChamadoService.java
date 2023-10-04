@@ -2,6 +2,7 @@ package br.com.devolucao.backend.services;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.devolucao.backend.domain.Chamado;
@@ -17,7 +18,13 @@ public class ChamadoService {
 	
 	private EstabelecimentoService estabelecimentoService;
 	
-	
+	@Autowired
+	public ChamadoService(ChamadoRepository chamadoRepository, EstabelecimentoService estabelecimentoService) {
+		this.chamadoRepository = chamadoRepository;
+		this.estabelecimentoService = estabelecimentoService;
+	}
+
+
 	@Transactional
 	public void incluir(ChamadoDTO chamadoDTO) {
 	    Chamado objeto = new Chamado();

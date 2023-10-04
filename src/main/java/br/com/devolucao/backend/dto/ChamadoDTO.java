@@ -15,7 +15,6 @@ public class ChamadoDTO {
 	private String imagem;
 	private String uf;
 	private String municipio;
-	private String cidade;
 	private String bairro;
 	private String loja;
 

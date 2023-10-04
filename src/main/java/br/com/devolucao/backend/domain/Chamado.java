@@ -16,8 +16,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Table(name = "tb_chamado")
+@Entity(name = "chamado")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -32,9 +32,9 @@ public class Chamado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-    @Lob
-    @Column(name = "imageBase64")
-    private String imageBase64;
+	@Lob
+	@Column(name = "imageBase64")
+	private String imageBase64;
 	
 	@Column(name = "dataAgendamento")
 	private LocalDateTime dataAgendamento;
