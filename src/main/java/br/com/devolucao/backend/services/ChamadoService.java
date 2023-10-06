@@ -35,7 +35,7 @@ public class ChamadoService {
 
 	    objeto.setEstabelecimento(estabObjeto);
 	    objeto.setDataAgendamento(LocalDateTime.now());
-	    objeto.setImageBase64(chamadoDTO.getImagem());
+//	    objeto.setImageBase64(chamadoDTO.getImagem());
 	    
 	    chamadoRepository.save(objeto);
 	}
