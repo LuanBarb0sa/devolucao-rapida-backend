@@ -2,6 +2,8 @@ package br.com.devolucao.backend.dto;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.devolucao.backend.domain.Chamado;
 import br.com.devolucao.backend.enumerated.SituacaoChamado;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ public class ChamadoDTOView {
 	
 	private String imageBase64;
 	
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	private LocalDateTime dataAgendamento;
 	
 	private EstabelecimentoDTO estabelecimentoDTO;
