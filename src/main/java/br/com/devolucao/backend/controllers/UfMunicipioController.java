@@ -8,12 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.devolucao.backend.dto.MunicipioDTO;
-import br.com.devolucao.backend.dto.UfDTO;
 import br.com.devolucao.backend.services.EnderecoService;
-import reactor.core.publisher.Mono;
 
 @Controller
 @RequestMapping("/uf")
@@ -27,19 +23,18 @@ public class UfMunicipioController {
     }
 
     @GetMapping
-    public @ResponseBody Mono<ResponseEntity<List<UfDTO>>> getAllUFs() {
-        List<UfDTO> ufsList = enderecoService.getAllUFs();
+    public ResponseEntity<List<String>> getAllUFs() {
+        List<String> ufsList = enderecoService.getAllUFs();
 
-        if (!ufsList.isEmpty()) {
-            return Mono.just(ResponseEntity.ok(ufsList));
-        } else {
-            return Mono.just(ResponseEntity.notFound().build());
+        if (ufsList.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(ufsList);
     }
 
     @GetMapping("/{uf}/municipios")
-    public ResponseEntity<?> getMunicipiosByUf(@PathVariable String uf) {
-        List<MunicipioDTO> municipios = enderecoService.getMunicipiosByUf(uf);
+    public ResponseEntity<List<String>> getMunicipiosByUf(@PathVariable String uf) {
+        List<String> municipios = enderecoService.getMunicipiosByUf(uf);
 
         if (!municipios.isEmpty()) {
             return ResponseEntity.ok(municipios);

@@ -32,30 +32,19 @@ public class EnderecoService {
 	            .build();
 	}
 	
-    public List<UfDTO> getAllUFs() {
-        String ibgeApiUrl = "/estados";
-
-        UfDTO[] ufsArray = webClient
-            .get()
-            .uri(ibgeApiUrl)
-            .retrieve()
-            .bodyToMono(UfDTO[].class)
-            .block();
-
-        return (ufsArray != null) ? Arrays.asList(ufsArray) : new ArrayList<>();
+    public List<String> getAllUFs() {
+    	LOGGER.info("Obter UFs");
+    	return enderecoRepository.findAllDistinctUfs();
     }
 
-    public List<MunicipioDTO> getMunicipiosByUf(String uf) {
-        String ibgeApiUrl = String.format("/estados/%s/municipios", uf);
-
-        MunicipioDTO[] municipiosArray = webClient
-            .get()
-            .uri(ibgeApiUrl)
-            .retrieve()
-            .bodyToMono(MunicipioDTO[].class)
-            .block();
-
-        return (municipiosArray != null) ? Arrays.asList(municipiosArray) : new ArrayList<>();
+    public List<String> getMunicipiosByUf(String uf) {
+	LOGGER.info("Obter municipios no uf:" + uf);
+		
+		if(StringUtils.isEmpty(uf)) {
+			throw new IllegalArgumentException("uf deve ser fornecido.");
+		}
+		
+		return enderecoRepository.findMunicipioByUf(uf);
     }
 
 
