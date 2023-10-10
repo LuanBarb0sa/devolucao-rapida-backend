@@ -30,7 +30,7 @@ public class ChamadoDTOView {
 	private int situacaoCodigo;
 	
     public ChamadoDTOView(Chamado chamado) {
-//        this.imageBase64 = chamado.getImageBase64();
+        this.imageBase64 = chamado.getImageBase64();
         this.dataAgendamento = chamado.getDataAgendamento();
         this.id = chamado.getId();
         this.estabelecimentoDTO = new EstabelecimentoDTO(chamado.getEstabelecimento());
