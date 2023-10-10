@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.devolucao.backend.dto.ChamadoDTO;
 import br.com.devolucao.backend.dto.ChamadoDTOView;
 import br.com.devolucao.backend.services.ChamadoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Controller
 @RequestMapping("/chamado")
+@Tag(name = "Chamados", description = "Operações referentes à inclusão de chamados.")
 public class ChamadoController {
 	
 	private ChamadoService chamadoService;

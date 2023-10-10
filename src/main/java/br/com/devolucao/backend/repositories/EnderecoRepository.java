@@ -18,10 +18,10 @@ public interface EnderecoRepository extends JpaRepository<Estabelecimento, Long>
 	@Query("SELECT DISTINCT e.identificacao FROM estabelecimento e WHERE e.municipio = :municipio AND e.bairro = :bairro")
 	List<String> findLojasByBairro(@Param("municipio") String municipio, @Param("bairro") String bairro);
 
-	@Query("SELECT DISTINCT e.municipio FROM Estabelecimento e WHERE e.uf = :uf")
+	@Query("SELECT DISTINCT e.municipio FROM estabelecimento e WHERE e.uf = :uf")
 	List<String> findMunicipioByUf(@Param("uf") String uf);
 
-	@Query("SELECT DISTINCT e.uf FROM Estabelecimento e")
+	@Query("SELECT DISTINCT e.uf FROM estabelecimento e")
 	List<String> findAllDistinctUfs();
 
 }

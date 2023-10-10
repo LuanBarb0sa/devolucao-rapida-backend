@@ -9,11 +9,13 @@ import br.com.devolucao.backend.domain.Product;
 import br.com.devolucao.backend.dto.ProductRequestDTO;
 import br.com.devolucao.backend.dto.ProductResponseDTO;
 import br.com.devolucao.backend.repositories.ProductRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
 @RestController()
 @RequestMapping("product")
+@Tag(name = "Product", description = "Operações referentes à busca de endereços.")
 public class ProductController {
 
     @Autowired
