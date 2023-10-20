@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
+import br.com.devolucao.backend.dto.EnderecoDTOView;
 import br.com.devolucao.backend.exception.ApplicationServiceException;
 import br.com.devolucao.backend.services.EnderecoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -60,5 +62,24 @@ public class UfMunicipioController {
         }
         return ResponseEntity.ok(lojas);
     }
+    
+    
+	@GetMapping("/{cep}")
+	public ResponseEntity<EnderecoDTOView> obterEnderecoPorCep(@PathVariable String cep) {
+
+		String viaCepUrl = "https://viacep.com.br/ws/" + cep + "/json/";
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		EnderecoDTOView endereco = restTemplate.getForObject(viaCepUrl, EnderecoDTOView.class);
+
+		if (endereco != null) {
+			return ResponseEntity.ok(endereco);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+    
+    
 
 }
