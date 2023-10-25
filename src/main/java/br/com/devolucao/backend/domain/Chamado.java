@@ -2,16 +2,18 @@ package br.com.devolucao.backend.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import br.com.devolucao.backend.enumerated.SituacaoChamado;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -34,9 +36,9 @@ public class Chamado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Lob
-	@Column(name = "imageBase64")
-	private String imageBase64;
+	@OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL)
+	private List<ChamadoImagem> imagens;
+	
 	
 	@Column(name = "dataAgendamento")
 	private LocalDateTime dataAgendamento;
@@ -47,6 +49,11 @@ public class Chamado implements Serializable {
 	
 	@Column(name = "situacao")
 	private Integer situacaoCodigo;
+	
+	@ManyToOne 
+    @JoinColumn(name = "user_id") 
+    private User user;
+	
     
 	public SituacaoChamado getSituacao() {
 	    if (situacaoCodigo == null) {

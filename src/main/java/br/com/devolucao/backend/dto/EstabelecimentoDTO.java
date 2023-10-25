@@ -13,8 +13,6 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized @Builder
 public class EstabelecimentoDTO {
 	
-	private String cnpj;
-	private String tipo;
 	private String identificacao;
 	private String cep;
 	private String uf;
@@ -25,8 +23,6 @@ public class EstabelecimentoDTO {
 	private String municipio;
 	
 	public EstabelecimentoDTO(Estabelecimento estabelecimento) {
-        this.cnpj = estabelecimento.getCnpj();
-        this.tipo = estabelecimento.getTipo();
         this.identificacao = estabelecimento.getIdentificacao();
         this.cep = estabelecimento.getCep();
         this.uf = estabelecimento.getUf();

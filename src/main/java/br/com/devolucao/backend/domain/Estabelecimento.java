@@ -28,10 +28,7 @@ public class Estabelecimento implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-	private String cnpj;
-	
-	private String tipo;
+
 	
 	private String identificacao;
 	
