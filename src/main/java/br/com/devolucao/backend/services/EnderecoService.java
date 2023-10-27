@@ -1,15 +1,13 @@
 package br.com.devolucao.backend.services;
 
 import java.util.List;
-
 import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.devolucao.backend.exception.ApplicationServiceException;
 import br.com.devolucao.backend.repositories.EnderecoRepository;
-import br.com.devolucao.backend.util.Util;
 import io.micrometer.common.util.StringUtils;
 import jakarta.transaction.Transactional;
 

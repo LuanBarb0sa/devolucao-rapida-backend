@@ -1,5 +1,7 @@
 package br.com.devolucao.backend.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +14,7 @@ import lombok.extern.jackson.Jacksonized;
 @Data
 public class ChamadoDTO {
 	
-	private String imagem;
+	private List<String> imagens; 
 	private String uf;
 	private String municipio;
 	private String bairro;
